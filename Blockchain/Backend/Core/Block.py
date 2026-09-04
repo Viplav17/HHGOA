@@ -4,3 +4,4 @@ class Block:
         self.Blocksize = Blocksize
         self.BlockHeader = BlockHeader
         self.Data = Data or []
+        self.block_hash = self.BlockHeader.to_hash()
