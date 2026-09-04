@@ -9,7 +9,7 @@ class BlockHeader:
         self.bits = bits
         self.TimeStamp = TimeStamp
 
-    def to_hash(self):
+    def To_Hash(self):
         # Serialize fields into a string/bytes to hash them
         header_str = f"{self.Version}{self.PrevBlockHash}{self.merkleroot}{self.bits}{self.TimeStamp}"
         return hash256(header_str.encode('utf-8')).hex()
