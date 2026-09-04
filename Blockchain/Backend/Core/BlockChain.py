@@ -54,15 +54,15 @@ class BlockChain:
         return New_Block
 
     def Verify_Block(self, Block):
-        if Block.height == 0:
+        if Block.Height == 0:
             return Block.BlockHeader.PrevBlockHash == ZERO_HASH
 
-        Prev_Block = self.chain[-1]
+        Prev_Block = self.chain[Block.Height - 1]
 
         if Block.BlockHeader.PrevBlockHash != Prev_Block.block_hash:
             return False
 
-        block_encoded_data = js.dumps(Block.data, sort_keys=True)
+        block_encoded_data = js.dumps(Block.Data, sort_keys=True)
         block_merkle_root = hash256(block_encoded_data).hex()
 
         if Block.BlockHeader.merkleroot != block_merkle_root:
