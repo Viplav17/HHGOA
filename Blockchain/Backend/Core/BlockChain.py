@@ -59,7 +59,7 @@ class BlockChain:
 
         Prev_Block = self.chain[Block.Height - 1]
 
-        if Block.BlockHeader.PrevBlockHash != Prev_Block.block_hash:
+        if Block.BlockHeader.PrevBlockHash != Prev_Block.Block_Hash:
             return False
 
         block_encoded_data = js.dumps(Block.Data, sort_keys=True)
@@ -68,7 +68,7 @@ class BlockChain:
         if Block.BlockHeader.merkleroot != block_merkle_root:
             return False
 
-        if Block.block_hash != Block.BlockHeader.to_hash():
+        if Block.block_hash != Block.BlockHeader.To_Hash():
             return False
 
         return True
