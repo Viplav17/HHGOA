@@ -4,3 +4,6 @@ deepface
 PIL-python image library
 time - optional
 requests
+json
+opencv
+deepface
