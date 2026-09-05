@@ -1,0 +1,6 @@
+numpy
+pandas
+deepface
+PIL-python image library
+time - optional
+requests
