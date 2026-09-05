@@ -2,3 +2,4 @@ venv/
 .env
 APIt.py
 .venv/
+__pycache__

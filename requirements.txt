@@ -1,8 +1,7 @@
 numpy
 pandas
 deepface
-PIL-python image library
-time - optional
+time
 requests
 json
 opencv

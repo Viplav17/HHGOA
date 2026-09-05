@@ -23,8 +23,6 @@ def Detect_Encode_Face(image_path: str):
     face = results[0] 
     embedding = face["embedding"] 
 
-
-    
     # Returns the actual variables
     return embedding
 
