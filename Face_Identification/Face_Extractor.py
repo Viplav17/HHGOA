@@ -4,7 +4,7 @@ from deepface import DeepFace
 MODEL_NAME = "ArcFace" 
 DETECTOR = "mtcnn" 
 
-def extract_and_prepare(image_path: str):
+def Detect_Encode_Face(image_path: str):
     """
     Detects a face, extracts the embedding, and returns the data. Takes image location as input.
     """

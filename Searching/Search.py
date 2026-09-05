@@ -11,7 +11,7 @@ INPUT_IMAGE_PATH = "my_face.jpg"
 MATCH_THRESHOLD = 0.5
 
 
-def run_pipeline(reference_image_path):
+def Search(reference_image_path):
     # encode the input photo into a vector (encoding)
     print("1. Encoding original face into vector space...")
     ref_vector = extract_face_vector(reference_image_path)
@@ -64,15 +64,3 @@ def run_pipeline(reference_image_path):
             continue
 
     return ref_vector, results_list
-
-
-if __name__ == "__main__":
-    original_vector, matched_results = run_pipeline(INPUT_IMAGE_PATH)
-
-    print(f"\nTotal verified items returned: {len(matched_results)}")
-
-    if matched_results:
-        first_match = matched_results[0]
-        match_image = first_match["image"]
-        match_vector = first_match["vector"]
-        print(f"First match vector length: {len(match_vector)}")
