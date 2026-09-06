@@ -4,3 +4,5 @@ deepface
 requests
 opencv-python
 deepface
+tf-keras
+serpapi

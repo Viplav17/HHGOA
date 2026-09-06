@@ -3,7 +3,6 @@ import requests
 import numpy as np
 from PIL import Image
 import serpapi
-
 from Searching.Cosine import SERPAPI_API_KEY, MATCH_THRESHOLD, cosine_distance
 from Searching.Image_Byte import _get_image_bytes
 from Face_Identification.Face_Extractor import Detect_Encode_Face

@@ -72,3 +72,7 @@ class BlockChain:
             return False
 
         return True
+
+    def Print_Chain(self, Chain):
+        for Block in Chain:
+            print(Block.Data)

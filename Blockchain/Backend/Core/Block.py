@@ -14,4 +14,4 @@ class Block:
         self.Blocksize = Blocksize
         self.BlockHeader = BlockHeader
         self.Data = Data or []
-        self.Block_Hash = self.BlockHeader.to_hash()
+        self.Block_Hash = self.BlockHeader.To_Hash()

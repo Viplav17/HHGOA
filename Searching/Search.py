@@ -24,4 +24,4 @@ def Search(image_path: str):
     # Step 2 — Web search & candidate filtering (Searching)
     matches = find_faces_on_web(ref_vector, image_path)
 
-    return ref_vector, matches
+    return matches
