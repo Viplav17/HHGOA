@@ -30,7 +30,7 @@ class BlockChain:
 
     def Add_Block(self, data: list):
         prev_block = self.chain[-1]
-        prev_hash = prev_block.block_hash
+        prev_hash = prev_block.Block_Hash
 
         Encoded_data = js.dumps(data, sort_keys=True)
         merkle_root = hash256(Encoded_data).hex()
@@ -68,11 +68,12 @@ class BlockChain:
         if Block.BlockHeader.merkleroot != block_merkle_root:
             return False
 
-        if Block.block_hash != Block.BlockHeader.To_Hash():
+        if Block.Block_Hash != Block.BlockHeader.To_Hash():
             return False
 
         return True
 
-    def Print_Chain(self, Chain):
-        for Block in Chain:
-            print(Block.Data)
+    def Print_Chain(self):  
+        for Block in self.chain:
+            print(f"\n--- Block {Block.Height} ---")
+            print(js.dumps(Block.Data, indent=4, sort_keys=True))

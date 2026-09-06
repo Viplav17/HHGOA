@@ -1,28 +1,38 @@
-import os
-import json
-import time
-
-from Face_Identification.Face_Extractor import  Detect_Encode_Face as DEF
 from Searching.Search import Search
 from Blockchain.Backend.Core.BlockChain import BlockChain
+from Blockchain.Backend.util.util import hash256
 
-def Main_Pipeline(face):
-    print("==================================================")
-    print("HH Goa 2026: Face ID & Blockchain Verification")
-    print("==================================================")
+def run_pipeline(input_image: str):
+    print("=== HH GOA 2026: Identity Verification Pipeline ===")
+    
+    # 1. Initialize Blockchain
+    ledger = BlockChain()
+    print(f"[0] Blockchain initialized (Genesis Hash: {ledger.chain[0].Block_Hash[:16]}...)")
 
-    print("\n[0] Initializing Blockchain...")
-    BC = BlockChain()
-    print("\n[0] Blockchain initialization Complete. Genesis Block Created")
+    # 2. Extract & Search Web
+    print(f"[1] Searching web matches for {input_image}...")
+    matches = Search(input_image)
+    
+    if not matches:
+        print("[!] No confident facial matches found online.")
+        return
 
-    print("\n[0] Searching for matches online until no matches found")
-    Matches = 1
-    while Matches != None:
-        Matches = Search("Test_Image.png")
-        print("\n[0] Match Found. Adding to Blockchain")
-        BC.Add_Block(Matches)
+    print(f"[+] Found {len(matches)} valid match(es).")
 
-    BC.Print_Chain(BC.chain)
+    # 3. Mint Blocks for Discovered Matches
+    for match in matches:
+        print(f"\n[2] Minting block for: {match['title']} ({match['page_url']})")
+        new_block = ledger.Add_Block([match])
+        print(f"    -> Block #{new_block.Height} created! Hash: {new_block.Block_Hash}")
+
+        # 4. Demonstrate Cryptographic Re-Verification
+        print("[3] Performing tamper-evident ledger verification...")
+        is_valid = ledger.Verify_Block(new_block)
+        print(f"    -> Ledger Verification Status: {'PASSED (Cryptographically Valid)' if is_valid else 'FAILED'}")
+
+    # 5. Output Complete Chain Ledger
+    print("\n[4] Complete Blockchain Ledger:")
+    ledger.Print_Chain()
 
 if __name__ == "__main__":
-    Main_Pipeline("hello")
+    run_pipeline("Test_Image.png")
