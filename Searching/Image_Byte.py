@@ -1,3 +1,7 @@
+import io
+import numpy as np
+from PIL import Image
+
 def _get_image_bytes(received_input):
     """Converts the incoming input into raw bytes ready for upload."""
     if isinstance(received_input, bytes):
